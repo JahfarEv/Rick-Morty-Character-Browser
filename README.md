@@ -30,6 +30,6 @@ A React/Next.js-based web app to browse and search characters from the Rick and 
 
 ```bash
 git clone https://github.com/JahfarEv/Rick-Morty-Character-Browser.git
-cd rick-morty-browser
+cd Rick-Morty-Character-Browser
 npm install
 npm run dev
