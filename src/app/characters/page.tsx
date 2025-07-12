@@ -105,10 +105,7 @@ export default function CharactersPage() {
           </div>
         )}
 
-        <CharacterTable
-          characters={data?.results || []}
-          loading={status === "loading"}
-        />
+        <CharacterTable />
 
         {data && data.info.pages > 1 && (
           <Pagination

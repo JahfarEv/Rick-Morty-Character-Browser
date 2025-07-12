@@ -1,15 +1,12 @@
-import { Character } from "../lib/types";
+import { useAppSelector } from "@/store/hooks";
 import { motion } from "framer-motion";
 
-interface CharacterTableProps {
-  characters: Character[];
-  loading: boolean;
-}
+export const CharacterTable = () => {
+  const { data, status } = useAppSelector((state) => state.character);
+  const characters = data?.results || [];
+  const loading = status === "loading";
+  console.log(characters, "data");
 
-export const CharacterTable = ({
-  characters,
-  loading,
-}: CharacterTableProps) => {
   if (loading) {
     return (
       <div className="text-center py-12">
@@ -54,12 +51,10 @@ export const CharacterTable = ({
   //  Render character table
 
   return (
-    
     // Wrapper with horizontal scroll and styling
 
     <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-lg">
       <table className="min-w-full divide-y divide-gray-200">
-
         {/* Table header */}
 
         <thead className="bg-gradient-to-r from-indigo-500 to-purple-600">
@@ -101,7 +96,6 @@ export const CharacterTable = ({
 
         <tbody className="bg-white divide-y divide-gray-200">
           {characters?.map((character, index) => (
-
             // Animated row using Framer Motion
 
             <motion.tr
