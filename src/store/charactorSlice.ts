@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ApiResponse, Character, Filters } from "@/lib/types";
+import { ApiResponse, Filters } from "@/lib/types";
 import { fetchCharacters } from "@/lib/api";
 
 interface CharacterState {
@@ -21,7 +21,7 @@ const initialState: CharacterState = {
   error: null,
 };
 
-// api calls - fetch characters
+// AsyncThunk to fetch characters
 
 export const fetchCharactersThunk = createAsyncThunk(
   "characters/fetchCharacters",

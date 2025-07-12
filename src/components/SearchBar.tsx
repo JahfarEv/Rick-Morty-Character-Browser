@@ -25,11 +25,14 @@ export const SearchBar = ({
   const [isMobile, setIsMobile] = useState(false);
 
   // Sync internal state with initialFilters prop changes
+
   useEffect(() => {
     setName(initialFilters.name || "");
     setStatus(initialFilters.status || "");
     setSpecies(initialFilters.species || "");
   }, [initialFilters]);
+
+  // mobile view for responsive toggle
 
   useEffect(() => {
     const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
@@ -37,12 +40,12 @@ export const SearchBar = ({
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
-
+  //  Handle search submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch({ name, status, species });
   };
-
+  // Handle reset filters
   const handleReset = () => {
     setName("");
     setStatus("");
@@ -88,7 +91,7 @@ export const SearchBar = ({
       >
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3 p-4">
           <div className="md:col-span-2">
-            <label 
+            <label
               htmlFor="name-input"
               className="block text-xs font-medium text-indigo-800 uppercase tracking-wider mb-1"
             >
@@ -108,7 +111,7 @@ export const SearchBar = ({
           </div>
 
           <div>
-            <label 
+            <label
               htmlFor="status-select"
               className="block text-xs font-medium text-indigo-800 uppercase tracking-wider mb-1"
             >
@@ -144,7 +147,7 @@ export const SearchBar = ({
           </div>
 
           <div>
-            <label 
+            <label
               htmlFor="species-input"
               className="block text-xs font-medium text-indigo-800 uppercase tracking-wider mb-1"
             >

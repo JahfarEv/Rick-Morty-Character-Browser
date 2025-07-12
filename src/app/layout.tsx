@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Rick & Morty Character Browser',
   description: 'Browse characters from the Rick & Morty universe',
+   icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

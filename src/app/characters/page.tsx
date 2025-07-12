@@ -15,18 +15,26 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function CharactersPage() {
   const dispatch = useAppDispatch();
+
+  // Select state from the Redux store
+
   const { data, filters, status, error } = useAppSelector(
     (state) => state.character
   );
+
+  // Fetch characters whenever filters change (includes pagination, search, filter)
 
   useEffect(() => {
     dispatch(fetchCharactersThunk(filters));
   }, [dispatch, filters]);
 
   // Clear error when filters change (new search initiated)
+
   useEffect(() => {
     dispatch(clearError());
   }, [dispatch, filters.name, filters.status, filters.species]);
+
+  // Handle search input from SearchBar
 
   const handleSearch = (newFilters: {
     name?: string;
@@ -36,9 +44,13 @@ export default function CharactersPage() {
     dispatch(setFilters({ ...newFilters, page: 1 }));
   };
 
+  // Handle pagination click
+
   const handlePageChange = (page: number) => {
     dispatch(setFilters({ page }));
   };
+
+  // Reset all filters
 
   const handleReset = () => {
     dispatch(resetFilters());
